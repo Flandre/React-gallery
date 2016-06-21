@@ -10,11 +10,11 @@ module.exports = function (grunt) {
     copy: {
       react: {
         src: 'node_modules/react/dist/react.min.js',
-        dest: 'dest/lib/react.min.js'
+        dest: 'dist/lib/react.min.js'
       },
       react_dom: {
         src: 'node_modules/react-dom/dist/react-dom.min.js',
-        dest: 'dest/lib/react-dom.min.js'
+        dest: 'dist/lib/react-dom.min.js'
       }
     },
     sass: {
@@ -23,7 +23,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'sass',
           src: ['*.scss','*.sass'],
-          dest: 'dest/css/',
+          dest: 'dist/css/',
           ext: '.css'
         }],
         options: {

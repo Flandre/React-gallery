@@ -20,9 +20,11 @@ class ImgFigure extends React.components {
   render() {
     return (
       <figure>
-        <img/>
+        <img src={this.props.data.imageURL}/>
         <figcaption>
-          <h2></h2>
+          <h2>
+            {this.props.data.title}
+          </h2>
         </figcaption>
       </figure>
     )

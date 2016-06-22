@@ -29,5 +29,7 @@ node_modules
 # Bower
 bower_components/
 
-# webstorm
+# webstorm IDE
 .idea
+
+#

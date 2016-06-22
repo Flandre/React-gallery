@@ -32,4 +32,5 @@ bower_components/
 # webstorm IDE
 .idea
 
-#
+# Dist directory
+dist

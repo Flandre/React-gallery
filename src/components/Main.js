@@ -16,8 +16,8 @@ imageDatas = (function genImageURL(imageDatasArr) {
   return imageDatasArr;
 })(imageDatas);
 
-class ImgFigure extends React.Component{
-  render(){
+class ImgFigure extends React.Component {
+  render() {
     return (
       <figure className="img-figure">
         <img src={this.props.data.imageURL}/>

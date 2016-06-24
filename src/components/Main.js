@@ -101,6 +101,8 @@ var AppComponent = React.createClass({
     }
   },
 
+  /* test commit */
+
   getInitialState: function () {
     return {
       imgsArrangeArr: [

@@ -80,7 +80,7 @@ var AppComponent = React.createClass({
     imgsArrangeCenterArr[0].pos = centerPos;
 
     //  取出要布局上侧图片的状态信息
-    topImgSpliceIndex = Math.ceil(Math.random() * (imgsArrangeArr.length - topImgNum))
+    topImgSpliceIndex = Math.ceil(Math.random() * (imgsArrangeArr.length - topImgNum));
     imgsArrangeTopArr = imgsArrangeArr.splice(topImgSpliceIndex, topImgNum);
 
     //  布局位于上侧的图片
@@ -90,6 +90,15 @@ var AppComponent = React.createClass({
         left: getRangeRandom(vPosRangeX[0], vPosRangeX[1])
       }
     })
+
+    //  布局位于左右两侧的图片
+    for (var i = 0, j = imgsArrangeArr.length, k = j / 2; i < j; i++) {
+      var hPosRangeLORX = null;
+      //  前半部分在左边布局，后半部分在右边布局
+      if (i < k) {
+
+      }
+    }
   },
 
   getInitialState: function () {

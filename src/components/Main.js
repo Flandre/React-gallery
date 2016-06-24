@@ -16,8 +16,8 @@ imageDatas = (function genImageURL(imageDatasArr) {
   return imageDatasArr;
 })(imageDatas);
 
-class ImgFigure extends React.Component {
-  render() {
+var ImgFigure = React.createClass({
+  render: function () {
     return (
       <figure className="img-figure">
         <img src={this.props.data.imageURL}/>
@@ -27,10 +27,27 @@ class ImgFigure extends React.Component {
       </figure>
     )
   }
-}
+});
 
-class AppComponent extends React.Component {
-  render() {
+var AppComponent = React.createClass({
+
+  Constant: {
+    centerPos: {
+      left: 0,
+      right: 0
+    },
+    hPosRange: { // 水平方向取值范围
+      leftSecX: [0, 0],
+      rightSecX: [0, 0],
+      y: [0, 0]
+    },
+    vPosRange: { //  垂直方向取值范围
+      x: [0, 0],
+      topY: [0, 0]
+    }
+  },
+
+  render: function () {
 
     var controllerUnits = [],
       imgFigures = [];
@@ -50,7 +67,7 @@ class AppComponent extends React.Component {
       </section>
     );
   }
-}
+});
 
 AppComponent.defaultProps = {};
 

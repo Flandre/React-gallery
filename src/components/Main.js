@@ -47,17 +47,54 @@ var AppComponent = React.createClass({
     }
   },
 
+  // 组件加载以后，为每张图片计算位置
+  componentDidMount: function () {
+    //  取得舞台大小
+    var stageDOM = react.findDOMNode(this.refs.stage),
+      stageW = stageDOM.scrollWidth,
+      stageH = stageDOM.scrollHeight,
+      halfStageW = Math.ceil(stageW / 2),
+      halfStageH = Math.ceil(stageH / 2);
+
+    //  拿到一个imageFigure的大小
+    var imageFigureDOM = react.findDOMNode(this.refs.imageFigure0),
+      imgW = imageFigureDOM.scrollWidth,
+      imgH = imageFigureDOM.scrollHeight,
+      halfImgW = Math.ceil(imgW / 2),
+      halfImgH = Math.ceil(imgH / 2)
+
+    //  计算中心位置
+    this.Constant.centerPos = {
+      left: halfStageW - halfImgW,
+      top: halfStageH - halfImgH
+    };
+
+    //  非中心图片取值范围
+    this.Constant.hPosRange.leftSecX[0] = -halfImgW;
+    this.Constant.hPosRange.leftSecX[1] = halfStageW - halfImgW * 3;
+    this.Constant.hPosRange.rightSecX[0] = halfStageW + halfImgW;
+    this.Constant.hPosRange.rightSecX[1] = stageW - halfImgW;
+    this.Constant.hPosRange.y[0] = -halfImgH;
+    this.Constant.hPosRange.y[1] = stageH - halfImgH;
+
+    this.Constant.vPosRange.topY[0] = -halfImgH;
+    this.Constant.vPosRange.topY[1] = halfStageH - halfImgH * 3;
+    this.Constant.vPosRange.x[0] = halfStageW - imgW;
+    this.Constant.vPosRange.x[1] = halfStageW;
+
+  },
+
   render: function () {
 
     var controllerUnits = [],
       imgFigures = [];
 
-    imageDatas.forEach(function (value) {
-      imgFigures.push(<ImgFigure data={value}/>);
+    imageDatas.forEach(function (value, index) {
+      imgFigures.push(<ImgFigure data={value} ref={"imageFigure" + index}/>);
     });
 
     return (
-      <section className="stage">
+      <section className="stage" ref="stage">
         <section className="img-sec">
           {imgFigures}
         </section>

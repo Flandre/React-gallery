@@ -72,7 +72,7 @@ var AppComponent = React.createClass({
 
       imgsArrangeTopArr = [],
     //取一个以内图片放在顶部
-      topImgNum = Math.ceil(Math.random() * 2),
+      topImgNum = Math.ceil(Math.random() * 2 ),
       topImgSpliceIndex = 0,
       imgsArrangeCenterArr = imgsArrangeArr.splice(centerIndex, 1);
 
@@ -89,16 +89,31 @@ var AppComponent = React.createClass({
         top: getRangeRandom(vPosRangeTopY[0], vPosRangeTopY[1]),
         left: getRangeRandom(vPosRangeX[0], vPosRangeX[1])
       }
-    })
+    });
 
     //  布局位于左右两侧的图片
     for (var i = 0, j = imgsArrangeArr.length, k = j / 2; i < j; i++) {
       var hPosRangeLORX = null;
       //  前半部分在左边布局，后半部分在右边布局
       if (i < k) {
-
+        hPosRangeLORX = hPosRangeLeftSecX;
+      } else {
+        hPosRangeLORX = hPosRangeRightSecX;
+      }
+      imgsArrangeArr[i].pos = {
+        top: getRangeRandom(hPosRangeY[0], hPosRangeY[1]),
+        left: getRangeRandom(hPosRangeLORX[0], hPosRangeLORX[1])
       }
     }
+
+    if(imgsArrangeTopArr && imgsArrangeTopArr[0]){
+      imgsArrangeArr.splice(topImgSpliceIndex, 0, imgsArrangeArr[0])
+    }
+    imgsArrangeArr.splice(centerIndex, 0, imgsArrangeCenterArr[0]);
+
+    this.setState({
+      imgsArrangeArr: imgsArrangeArr
+    });
   },
 
   getInitialState: function () {

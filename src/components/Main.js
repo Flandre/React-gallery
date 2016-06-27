@@ -97,12 +97,6 @@ var AppComponent = React.createClass({
       };
     });
 
-    /*
-     *  test
-     */
-    console.log('vPosRangeX = ' + vPosRangeX[0] + ',' + vPosRangeX[1]);
-    console.log(JSON.stringify(imgsArrangeTopArr));
-
     //  布局位于左右两侧的图片
     for (var i = 0, j = imgsArrangeArr.length, k = j / 2; i < j; i++) {
       var hPosRangeLORX = null;
@@ -118,22 +112,10 @@ var AppComponent = React.createClass({
       }
     }
 
-    /*
-     *  test
-     */
-    console.log(JSON.stringify(imgsArrangeArr));
-
     if (imgsArrangeTopArr && imgsArrangeTopArr[0]) {
       imgsArrangeArr.splice(topImgSpliceIndex, 0, imgsArrangeTopArr[0]);
     }
     imgsArrangeArr.splice(centerIndex, 0, imgsArrangeCenterArr[0]);
-
-
-    /*
-     *  test
-     */
-    console.log('-------');
-    console.log(JSON.stringify(imgsArrangeArr));
 
     this.setState({
       imgsArrangeArr: imgsArrangeArr

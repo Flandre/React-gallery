@@ -28,7 +28,7 @@ var ImgFigure = React.createClass({
   render: function () {
     var styleObj = {};
     //  如果 props 属性中指定了这张图片的位置，则使用
-    if(this.props.arrange.pos){
+    if (this.props.arrange.pos) {
       styleObj = this.props.arrange.pos;
     }
     return (
@@ -77,8 +77,8 @@ var AppComponent = React.createClass({
       vPosRangeX = vPosRange.x,
 
       imgsArrangeTopArr = [],
-    //取一个以内图片放在顶部
-      topImgNum = Math.ceil(Math.random() * 2 ),
+    //取一个或者两个图片放在顶部
+      topImgNum = Math.ceil(Math.random() * 2),
       topImgSpliceIndex = 0,
       imgsArrangeCenterArr = imgsArrangeArr.splice(centerIndex, 1);
 
@@ -94,7 +94,13 @@ var AppComponent = React.createClass({
       imgsArrangeTopArr[index].pos = {
         top: getRangeRandom(vPosRangeTopY[0], vPosRangeTopY[1]),
         left: getRangeRandom(vPosRangeX[0], vPosRangeX[1])
-      }
+      };
+
+      /*
+       *  test
+       */
+      console.log('vPosRangeX = ' + vPosRangeX[0] + ',' + vPosRangeX[1]);
+      console.log(JSON.stringify(imgsArrangeTopArr));
     });
 
     //  布局位于左右两侧的图片
@@ -112,8 +118,8 @@ var AppComponent = React.createClass({
       }
     }
 
-    if(imgsArrangeTopArr && imgsArrangeTopArr[0]){
-      imgsArrangeArr.splice(topImgSpliceIndex, 0, imgsArrangeArr[0])
+    if (imgsArrangeTopArr && imgsArrangeTopArr[0]) {
+      imgsArrangeArr.splice(topImgSpliceIndex, 0, imgsArrangeTopArr)
     }
     imgsArrangeArr.splice(centerIndex, 0, imgsArrangeCenterArr[0]);
 
@@ -166,7 +172,7 @@ var AppComponent = React.createClass({
     this.Constant.hPosRange.y[1] = stageH - halfImgH;
 
     //  计算上侧区域图片排布位置的取值范围
-    this.Constant.vPosRange.topY[0] = -halfStageH;
+    this.Constant.vPosRange.topY[0] = -halfImgH;
     this.Constant.vPosRange.topY[1] = halfStageH - halfImgH * 3;
     this.Constant.vPosRange.x[0] = halfStageW - imgW;
     this.Constant.vPosRange.x[1] = halfStageW;

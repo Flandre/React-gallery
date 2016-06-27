@@ -5,6 +5,7 @@ import React from 'react';
 
 //  获取图片相关数据
 let imageDatas = require('../data/imageDatas.json');
+let reactDOM = require('react-dom');
 
 //  将图片名信息转换成URL路径信息
 imageDatas = (function genImageURL(imageDatasArr) {
@@ -137,14 +138,14 @@ var AppComponent = React.createClass({
   // 组件加载以后，为每张图片计算位置
   componentDidMount: function () {
     //  取得舞台大小
-    var stageDOM = React.findDOMNode(this.refs.stage),
+    var stageDOM = reactDOM.findDOMNode(this.refs.stage),
       stageW = stageDOM.scrollWidth,
       stageH = stageDOM.scrollHeight,
       halfStageW = Math.ceil(stageW / 2),
       halfStageH = Math.ceil(stageH / 2);
 
     //  拿到一个imageFigure的大小
-    var imageFigureDOM = React.findDOMNode(this.refs.imageFigure0),
+    var imageFigureDOM = reactDOM.findDOMNode(this.refs.imageFigure0),
       imgW = imageFigureDOM.scrollWidth,
       imgH = imageFigureDOM.scrollHeight,
       halfImgW = Math.ceil(imgW / 2),

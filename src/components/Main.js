@@ -25,8 +25,13 @@ function getRangeRandom(low, high) {
 
 var ImgFigure = React.createClass({
   render: function () {
+    var styleObj = {};
+    //  如果 props 属性中指定了这张图片的位置，则使用
+    if(this.props.arrange.pos){
+      styleObj = this.props.arrange.pos;
+    }
     return (
-      <figure className="img-figure">
+      <figure className="img-figure" style={styleObj}>
         <img src={this.props.data.imageURL}/>
         <figcaption>
           <h2 className="img-title">{this.props.data.title}</h2>
@@ -59,7 +64,7 @@ var AppComponent = React.createClass({
    *  @param centerIndex 指定居中排布哪个图片
    */
   rearrange: function (centerIndex) {
-    var imgsArrangeArr = this.stage.imgsArrangeArr,
+    var imgsArrangeArr = this.state.imgsArrangeArr,
       Constant = this.Constant,
       centerPos = Constant.centerPos,
       hPosRange = Constant.hPosRange,
@@ -132,18 +137,18 @@ var AppComponent = React.createClass({
   // 组件加载以后，为每张图片计算位置
   componentDidMount: function () {
     //  取得舞台大小
-    var stageDOM = react.findDOMNode(this.refs.stage),
+    var stageDOM = React.findDOMNode(this.refs.stage),
       stageW = stageDOM.scrollWidth,
       stageH = stageDOM.scrollHeight,
       halfStageW = Math.ceil(stageW / 2),
       halfStageH = Math.ceil(stageH / 2);
 
     //  拿到一个imageFigure的大小
-    var imageFigureDOM = react.findDOMNode(this.refs.imageFigure0),
+    var imageFigureDOM = React.findDOMNode(this.refs.imageFigure0),
       imgW = imageFigureDOM.scrollWidth,
       imgH = imageFigureDOM.scrollHeight,
       halfImgW = Math.ceil(imgW / 2),
-      halfImgH = Math.ceil(imgH / 2)
+      halfImgH = Math.ceil(imgH / 2);
 
     //  计算中心位置
     this.Constant.centerPos = {
@@ -183,7 +188,7 @@ var AppComponent = React.createClass({
           }
         }
       }
-      imgFigures.push(<ImgFigure data={value} ref={"imageFigure" + index}/>);
+      imgFigures.push(<ImgFigure data={value} ref={"imageFigure" + index} arrange={this.state.imgsArrangeArr[index]}/>);
     }.bind(this));
 
     return (

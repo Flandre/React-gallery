@@ -166,7 +166,7 @@ var AppComponent = React.createClass({
     this.Constant.hPosRange.y[1] = stageH - halfImgH;
 
     //  计算上侧区域图片排布位置的取值范围
-    this.Constant.vPosRange.topY[0] = -halfImgH;
+    this.Constant.vPosRange.topY[0] = -halfStageH;
     this.Constant.vPosRange.topY[1] = halfStageH - halfImgH * 3;
     this.Constant.vPosRange.x[0] = halfStageW - imgW;
     this.Constant.vPosRange.x[1] = halfStageW;

@@ -38,5 +38,6 @@ config.module.loaders.push({
     [ path.join(__dirname, '/../src') ]
   )
 });
-
+//  github发布用
+baseConfig.output.publicPath = 'assets/';
 module.exports = config;

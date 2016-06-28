@@ -24,6 +24,13 @@ function getRangeRandom(low, high) {
   return Math.ceil(Math.random() * (high - low) + low);
 }
 
+/*
+ *  获取 0~30° 之间任意一个正负值
+ */
+function get30DegRandom() {
+  return ((Math.random() > 0.5 ? '' : '-') + Math.ceil(Math.random() * 30));
+}
+
 var ImgFigure = React.createClass({
   render: function () {
     var styleObj = {};
@@ -85,16 +92,22 @@ var AppComponent = React.createClass({
     //  居中 centerIndex 的图片
     imgsArrangeCenterArr[0].pos = centerPos;
 
+    //  居中 centerIndex 图片不需要旋转
+    imgsArrangeCenterArr.rotate = 0;
+
     //  取出要布局上侧图片的状态信息
     topImgSpliceIndex = Math.ceil(Math.random() * (imgsArrangeArr.length - topImgNum));
     imgsArrangeTopArr = imgsArrangeArr.splice(topImgSpliceIndex, topImgNum);
 
     //  布局位于上侧的图片
     imgsArrangeTopArr.forEach(function (value, index) {
-      imgsArrangeTopArr[index].pos = {
-        top: getRangeRandom(vPosRangeTopY[0], vPosRangeTopY[1]),
-        left: getRangeRandom(vPosRangeX[0], vPosRangeX[1])
-      };
+      imgsArrangeTopArr[index] = {
+        pos: {
+          top: getRangeRandom(vPosRangeTopY[0], vPosRangeTopY[1]),
+          left: getRangeRandom(vPosRangeX[0], vPosRangeX[1])
+        },
+        rotate: get30DegRandom()
+      }
     });
 
     //  布局位于左右两侧的图片
@@ -106,9 +119,12 @@ var AppComponent = React.createClass({
       } else {
         hPosRangeLORX = hPosRangeRightSecX;
       }
-      imgsArrangeArr[i].pos = {
-        top: getRangeRandom(hPosRangeY[0], hPosRangeY[1]),
-        left: getRangeRandom(hPosRangeLORX[0], hPosRangeLORX[1])
+      imgsArrangeArr[i] = {
+        pos: {
+          top: getRangeRandom(hPosRangeY[0], hPosRangeY[1]),
+          left: getRangeRandom(hPosRangeLORX[0], hPosRangeLORX[1])
+        },
+        rotate: get30DegRandom()
       }
     }
 

@@ -38,6 +38,12 @@ var ImgFigure = React.createClass({
     if (this.props.arrange.pos) {
       styleObj = this.props.arrange.pos;
     }
+    //  如果图片旋转角度有值并且不为零，添加旋转角度
+    if (this.props.arrange.rotate){
+      (['-webkit-', '-moz-', '-ms-', '-o-', '']).forEach(function(value){
+        styleObj[value + 'transform'] = 'rotate(' + this.props.arrange.rotate + 'deg)'
+      }.bind(this));
+    }
     return (
       <figure className="img-figure" style={styleObj}>
         <img src={this.props.data.imageURL}/>
@@ -141,12 +147,13 @@ var AppComponent = React.createClass({
   getInitialState: function () {
     return {
       imgsArrangeArr: [
-        /*{
-         pos: {
-         left: '0',
-         top: '0'
-         }
-         }*/
+        // {
+        //   pos: {
+        //     left: '0',
+        //     top: '0'
+        //   },
+        //   rotate: 0
+        // }
       ]
     };
   },

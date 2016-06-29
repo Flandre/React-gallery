@@ -31,6 +31,8 @@ You will also need to install:
     * Launch cmd, `npm config set msvs_version 2015`
     If the above steps didn't work for you, please visit [Microsoft's Node.js Guidelines for Windows](https://github.com/Microsoft/nodejs-guidelines/blob/master/windows-environment.md#compiling-native-addon-modules) for additional tips.
 
+如不在服务器根目录，dist中index.html文件需要更改路径
+
 ##运行
 
 ```bash

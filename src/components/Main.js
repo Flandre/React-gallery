@@ -60,7 +60,7 @@ var AppComponent = React.createClass({
   Constant: {
     centerPos: {
       left: 0,
-      right: 0
+      top: 0
     },
     hPosRange: { // 水平方向取值范围
       leftSecX: [0, 0],

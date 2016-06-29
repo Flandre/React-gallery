@@ -152,7 +152,8 @@ var AppComponent = React.createClass({
         //     left: '0',
         //     top: '0'
         //   },
-        //   rotate: 0
+        //   rotate: 0, //  旋转角度
+        //   isInverse: false //  设置正反面
         // }
       ]
     };

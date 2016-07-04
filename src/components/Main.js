@@ -39,13 +39,16 @@ var ImgFigure = React.createClass({
       styleObj = this.props.arrange.pos;
     }
     //  如果图片旋转角度有值并且不为零，添加旋转角度
-    if (this.props.arrange.rotate){
-      (['-webkit-', '-moz-', '-ms-', '-o-', '']).forEach(function(value){
+    if (this.props.arrange.rotate) {
+      (['-webkit-', '-moz-', '-ms-', '-o-', '']).forEach(function (value) {
         styleObj[value + 'transform'] = 'rotate(' + this.props.arrange.rotate + 'deg)'
       }.bind(this));
     }
+    var imgFigureClassName = "img-figure";
+    imgFigureClassName += this.props.arrange.isInverse ? ' is-inverse' : '';
+
     return (
-      <figure className="img-figure" style={styleObj}>
+      <figure className={imgFigureClassName} style={styleObj}>
         <img src={this.props.data.imageURL}/>
         <figcaption>
           <h2 className="img-title">{this.props.data.title}</h2>
@@ -71,6 +74,22 @@ var AppComponent = React.createClass({
       x: [0, 0],
       topY: [0, 0]
     }
+  },
+
+  /*
+   *  翻转图片
+   *  @prarm index  输入当前被执行 inverse 操作的图片对应图片信息数组的 index 值
+   *  @return {function}  这是一个闭包函数，期内 return 一个真正待被执行的函数
+   */
+
+  inverse: function (index) {
+    return function (index) {
+      var imgsArrangeArr = this.state.imgsArrangeArr;
+      imgsArrangeArr[index].isInverse = !imgsArrangeArr[index].isInverse;
+      this.setState({
+        imgsArrangeArr: imgsArrangeArr
+      })
+    }.bind(this)
   },
 
   /*
@@ -210,10 +229,12 @@ var AppComponent = React.createClass({
           pos: {
             left: '0',
             top: '0'
-          }
+          },
+          rotate: '0',
+          isInverse: false
         }
       }
-      imgFigures.push(<ImgFigure data={value} ref={"imageFigure" + index} arrange={this.state.imgsArrangeArr[index]}/>);
+      imgFigures.push(<ImgFigure data={value} ref={"imageFigure" + index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)}/>);
     }.bind(this));
 
     return (

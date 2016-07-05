@@ -95,7 +95,7 @@ var AppComponent = React.createClass({
    */
 
   inverse: function (index) {
-    return function (index) {
+    return function () {
       var imgsArrangeArr = this.state.imgsArrangeArr;
       imgsArrangeArr[index].isInverse = !imgsArrangeArr[index].isInverse;
       this.setState({

@@ -36,6 +36,7 @@ var ImgFigure = React.createClass({
    *  imgFigure的点击处理函数
    */
   handleClick: function(e){
+    this.props.inverse();
     e.stopPropagation();
     e.preventDefault();
   },
@@ -60,7 +61,7 @@ var ImgFigure = React.createClass({
         <img src={this.props.data.imageURL}/>
         <figcaption>
           <h2 className="img-title">{this.props.data.title}</h2>
-          <div className="img-back">
+          <div className="img-back" onClick={this.handleClick}>
             <p>{this.props.data.desc}</p>
           </div>
         </figcaption>

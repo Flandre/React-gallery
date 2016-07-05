@@ -32,6 +32,14 @@ function get30DegRandom() {
 }
 
 var ImgFigure = React.createClass({
+  /*
+   *  imgFigure的点击处理函数
+   */
+  handleClick: function(e){
+    e.stopPropagation();
+    e.preventDefault();
+  },
+
   render: function () {
     var styleObj = {};
     //  如果 props 属性中指定了这张图片的位置，则使用
@@ -48,10 +56,13 @@ var ImgFigure = React.createClass({
     imgFigureClassName += this.props.arrange.isInverse ? ' is-inverse' : '';
 
     return (
-      <figure className={imgFigureClassName} style={styleObj}>
+      <figure className={imgFigureClassName} style={styleObj} onClick={this.handleClick}>
         <img src={this.props.data.imageURL}/>
         <figcaption>
           <h2 className="img-title">{this.props.data.title}</h2>
+          <div className="img-back">
+            <p>{this.props.data.desc}</p>
+          </div>
         </figcaption>
       </figure>
     )

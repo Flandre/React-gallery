@@ -35,6 +35,11 @@ html, body {
       padding: 40px;
       box-sizing: border-box;
       background-color: #fff;
+      transform-style: preserve-3d;
+      cursor: pointer;
+      &.is-inverse {
+        transform: rotateY(180deg) !important;
+      }
     }
 
     figcaption {

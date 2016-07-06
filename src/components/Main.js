@@ -36,9 +36,9 @@ var ImgFigure = React.createClass({
    *  imgFigure的点击处理函数
    */
   handleClick: function (e) {
-    if(this.props.arrange.isCenter){
+    if (this.props.arrange.isCenter) {
       this.props.inverse();
-    }else{
+    } else {
       this.props.center()
     }
     e.stopPropagation();
@@ -51,7 +51,11 @@ var ImgFigure = React.createClass({
     if (this.props.arrange.pos) {
       styleObj = this.props.arrange.pos;
     }
-    //  如果图片旋转角度有值并且不为零，添加旋转角度
+    //  中心图片层级调整
+    if (this.props.arrange.isCenter) {
+      styleObj.zIndex = 11;
+    }
+    //  如果图片旋转角度有值并且不为0，添加旋转角度
     if (this.props.arrange.rotate) {
       (['-webkit-', '-moz-', '-ms-', '-o-', '']).forEach(function (value) {
         styleObj[value + 'transform'] = 'rotate(' + this.props.arrange.rotate + 'deg)'

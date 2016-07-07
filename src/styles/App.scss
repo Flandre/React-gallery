@@ -36,7 +36,7 @@ html, body {
       box-sizing: border-box;
       background-color: #fff;
       transform-style: preserve-3d;
-      transition: left .6s ease-in-out, top .6s ease-in-out;
+      transition: left .6s ease-in-out, top .6s ease-in-out, transform .6s ease-in-out;
       cursor: pointer;
       &.is-inverse {
         transform: rotateY(180deg) !important;

@@ -26,6 +26,7 @@ html, body {
   height: 100%;
   overflow: hidden;
   background-color: #ddd;
+  perspective: 1800px;
   @at-root {
     .img-figure {
       position: absolute;

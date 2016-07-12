@@ -78,6 +78,19 @@ var ImgFigure = React.createClass({
   }
 });
 
+//  控制组件
+var ControllerUnit = React.createClass({
+  handleClick: function(e){
+    e.preventDefault();
+    e.stopPropagation();
+  },
+  render: function () {
+    return (
+      <span className="controller-unit" onClick={this.handleClick}></span>
+    );
+  }
+});
+
 var AppComponent = React.createClass({
 
   Constant: {
@@ -274,6 +287,7 @@ var AppComponent = React.createClass({
       }
       imgFigures.push(<ImgFigure data={value} ref={"imageFigure" + index} arrange={this.state.imgsArrangeArr[index]}
                                  inverse={this.inverse(index)} center={this.center(index)}/>);
+      controllerUnits.push(<controllerUnit/>)
     }.bind(this));
 
     return (

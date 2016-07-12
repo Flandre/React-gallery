@@ -38,9 +38,10 @@ html, body {
       background-color: #fff;
       transform-style: preserve-3d;
       transition: left .6s ease-in-out, top .6s ease-in-out, transform .6s ease-in-out;
+      transform-origin: 0 50% 0;
       cursor: pointer;
       &.is-inverse {
-        transform: rotateY(180deg) !important;
+        transform: translateX(320px) rotateY(180deg) !important;
       }
     }
 

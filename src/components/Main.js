@@ -287,7 +287,7 @@ var AppComponent = React.createClass({
       }
       imgFigures.push(<ImgFigure data={value} ref={"imageFigure" + index} arrange={this.state.imgsArrangeArr[index]}
                                  inverse={this.inverse(index)} center={this.center(index)}/>);
-      controllerUnits.push(<controllerUnit/>)
+      controllerUnits.push(<ControllerUnit/>)
     }.bind(this));
 
     return (

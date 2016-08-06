@@ -61,7 +61,7 @@ var ImgFigure = React.createClass({
         styleObj[value + 'transform'] = 'rotate(' + this.props.arrange.rotate + 'deg)'
       }.bind(this));
     }
-    var imgFigureClassName = "img-figure";
+    var imgFigureClassName = 'img-figure';
     imgFigureClassName += this.props.arrange.isInverse ? ' is-inverse' : '';
 
     return (
@@ -300,7 +300,7 @@ var AppComponent = React.createClass({
           isCenter: false
         }
       }
-      imgFigures.push(<ImgFigure data={value} ref={"imageFigure" + index} arrange={this.state.imgsArrangeArr[index]}
+      imgFigures.push(<ImgFigure data={value} ref={'imageFigure' + index} arrange={this.state.imgsArrangeArr[index]}
                                  inverse={this.inverse(index)} center={this.center(index)}/>);
       controllerUnits.push(<ControllerUnit arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>)
     }.bind(this));

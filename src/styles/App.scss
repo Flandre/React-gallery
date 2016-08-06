@@ -1,11 +1,14 @@
 /* Base Application Styles */
 @font-face {
-  font-family: 'iconfont';
-  src: url('../fonts/icons/iconfont.eot');
-  src: url('../fonts/icons/iconfont.eot') format('embedded-opentype'),
-  url('../fonts/icons/iconfont.woff') format('woff'),
-  url('../fonts/icons/iconfont.ttf') format('truetype'),
-  url('../fonts/icons/iconfont.svg') format('svg');
+  font-family: 'FontAwesome';
+  src: url('../fonts/icons/fontawesome-webfont.eot');
+  src: url('../fonts/icons/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/icons/fontawesome-webfont.woff2') format('woff2'),
+  url('../fonts/icons/fontawesome-webfont.woff') format('woff'),
+  url('../fonts/icons/fontawesome-webfont.ttf') format('truetype'),
+  url('../fonts/icons/fontawesome-webfont.svg#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 html, body {
@@ -112,10 +115,9 @@ html, body {
         background-color: #888;
         transform: scale(1);
         &::after {
-          font-family: 'iconfont' !important;
-          content: '&#xe66f;';
-          font-size: 80%;
-          line-height: 30px;
+          font-family: 'FontAwesome' !important;
+          content: '\f01e';
+          line-height: 28px;
           color: #fff;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
